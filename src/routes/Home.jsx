@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import Admin from "./Admin";
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Figure from 'react-bootstrap/Figure';
 
 const Home = () => {
   const [sedans, setSedans] = useState([]);
@@ -41,13 +44,29 @@ const Home = () => {
         sedans.map((sedans) => (
 
           <div className="post" key={sedans.id}>
-            <div className="container">
-              <h4 className="infosapi"><span>Veículo:</span> {sedans.marca} / {sedans.modelo}</h4>
-              <h4 className="infosapi"><span>Infos adicionais: </span>{sedans.ano} / {sedans.cor}</h4><br />
-              {/*               <Link className="btn-btn" to={`/NewPost`}>
-                Cadastrar veículo
-              </Link> */}
-            </div>
+            <Card style={{ width: '18rem' }}>
+
+              <Figure>
+                <Figure.Image
+                  width={171}
+                  height={180}
+                  alt="171x180"
+                  src="https://cdn-icons-png.flaticon.com/512/3202/3202875.png"
+                />
+              </Figure>
+
+              <Card.Body>
+                <Card.Title>Vaga: {sedans.id}</Card.Title>
+                <Card.Title>Marca: {sedans.marca}</Card.Title>
+
+              </Card.Body>
+              <ListGroup className="list-group-flush">
+                <ListGroup.Item>Modelo: {sedans.modelo}</ListGroup.Item>
+                <ListGroup.Item>Ano: {sedans.ano}</ListGroup.Item>
+                <ListGroup.Item>Cor: {sedans.cor}</ListGroup.Item>
+              </ListGroup>
+
+            </Card>
           </div>
         ))
       )}
